@@ -1,0 +1,211 @@
+.Header{
+	padding: 10px;
+	margin: auto;
+	width: 60%;
+	background-color: #f3f3f3;
+	overflow: hidden;
+}
+
+.header-logo{
+	float: left;
+	width: 20%;
+}
+
+.header-logo img {
+	width: 100%
+}
+
+.header-text{
+	float: right;
+	width: 80%;
+}
+
+.header-text h1, p{
+	text-align: center;
+}
+
+.menu{
+	padding: 10px;
+	margin: auto;
+	background-color: Gray;
+	width: 60%;
+	overflow: hidden;
+}
+
+.menu a{
+	text-decoration: none;
+	color: white;
+	margin: 0 7px;
+	font-weight: bold;
+}
+
+.menu-kiri{
+	float: left;
+	width: 70%;
+}
+
+.menu-kanan{
+	float: right;
+	width: 30%;
+	text-align: right;
+	font-weight: normal;
+	color:black;
+}
+
+.menu-kanan a{
+	color:black;
+	text-decoration: underline;
+}
+
+
+.main-content{
+	/*padding: 10px;*/
+	width: 61.5%;
+	margin: auto;
+	background-color: whitesmoke;
+	overflow: hidden;
+
+}
+
+.navigate{
+	float: left;
+	width:20%;
+}
+
+.navigate p{
+	margin: 10px 0 10px 10px;
+}
+
+.article{
+	background-color: white;
+	float: left;
+	width: 80%;
+	min-height: 450px;
+}
+.article img{
+	width: 15%;
+	float: left;
+}
+
+.article p{
+	margin: 10px;
+	text-align: justify;
+	overflow: hidden;
+}
+
+.article a{
+	font-size: 12px;
+	font-style: italic;
+}
+
+.footer p{
+	text-align: center;
+}
+
+.article-product{
+	background-color: white;
+	float: right;
+	width: 80%;
+	min-height: 450px;
+}
+
+.article-product img{
+	width: 20%;
+	margin: 10px 0 10px;
+}
+
+.footer{
+	width: 60%;
+	padding: 5px 10px;
+	margin: auto;
+	background-color: gray;
+}
+
+table {
+	/*background-color: whitesmoke;*/
+	padding:5px;
+	/*font-weight:bold;*/
+}
+
+.login-table {
+	/*width: 300;*/
+	margin: auto;
+	/*float: right;*/
+	/*background: gray;*/
+	margin-top: 10px;
+	/*position: relative;*/
+	/*border:dashed #CCC 1px;*/
+	/*left:50	%;*/
+	/*width:auto;*/
+	/*position:relative;*/
+	/*left:38%;*/
+	width: 50%;
+	text-align: center;
+	border:dashed #CCC 2px;
+	overflow: visible;
+	overflow-x: hidden;
+	padding: 5px;
+	text-shadow: 0 1px 0 #fff;
+	/*border: 1px solid #aaa;*/
+}
+
+.login-table img{
+	width: 30%;
+	margin-left: 35%;
+	padding: 5px;
+	border: dashed gray 1px;
+}
+
+.login-table table{
+	margin:auto;
+	/*background: gray;*/
+	padding: 15px;
+}
+
+.login-table h1{
+	color: #fc5614;
+}
+
+.login-table input{
+	margin-bottom: 5px;
+	width: 100%;
+	padding: 5px;
+}
+
+.signup-table {
+	margin: auto;
+	margin-top: 10px;
+	width: 25%;
+	text-align:center;
+	border:dashed #CCC 2px;
+	overflow: visible;
+	overflow-x: hidden;
+	padding: 15px;
+	text-shadow: 0 1px 0 #fff;
+}
+
+.signup-table table{
+	margin:auto;
+	padding: 15px;
+}
+
+.signup-table h1{
+	color: #fc5614;
+}
+
+.signup-table input{
+	margin-bottom: 5px;
+	width: 100%;
+	padding: 5px;
+}
+
+#warning{
+	background-color: #ed7425;
+	color: white;
+}
+
+#danger{
+	/*border: none;*/
+	background-color: red;
+	color: white;
+}
