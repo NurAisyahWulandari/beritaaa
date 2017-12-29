@@ -95,7 +95,6 @@
 
 .article a{
 	font-size: 12px;
-	font-style: italic;
 }
 
 .footer p{
@@ -200,12 +199,25 @@ table {
 }
 
 #warning{
+	display: block;
 	background-color: #ed7425;
-	color: white;
+	width: 50px;
+  height: 20px;
+	padding: 5px;
+	text-align: center;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
 }
 
 #danger{
-	/*border: none;*/
 	background-color: red;
-	color: white;
+	display: block;
+	width: 50px;
+  height: 20px;
+	padding: 5px;
+	text-align: center;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
 }

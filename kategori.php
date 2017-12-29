@@ -25,7 +25,7 @@
             <center>
             <!-- new category form -->
               <div class="news-table">
-                <form action="proses_kategori.php" method="POST">
+                <form action="kategori_insert_exec.php" method="POST">
                    <table>
                      <input type="hidden" name="admin_id" value="<?php echo $admin_id; ?>">
                      <h2>Tambah Kategori</h2>
@@ -46,7 +46,7 @@
               <h2>List Kategori</h2>
               <table border="" style="text-align:center;">
                 <tr style="background-color:blue; color:white;">
-                  <th>No</th>
+                  <th style="padding: 5px;">No</th>
                   <th>Nama Kategori</th>
                   <th>Admin</th>
                   <th colspan="2">Aksi</th>

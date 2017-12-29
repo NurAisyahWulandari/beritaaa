@@ -25,27 +25,30 @@
             <center>
             <!-- new category form -->
               <div class="news-table">
-                <form action="proses_kategori.php" method="POST">
+                <?php
+                 $admin_id = $_SESSION['id'];
+                 $id = $_GET['id'];
+                 $stmt = $conn->prepare("SELECT * FROM category WHERE id=$id");
+                 $stmt->execute();
+                 $row = $stmt->fetch(PDO::FETCH_OBJ);
+                 ?>
+                <!-- start form -->
+                <form action="kategori_edit_exec.php" method="POST">
                    <table>
-                     <?php
-                      $admin_id = $_SESSION['id'];
-                      $id = $_GET['id'];
-                      $stmt = $conn->prepare("SELECT * FROM category WHERE id='.$id.'");
-                      $stmt->execute();
-                      $row = $pdo->fetch(PDO::FETCH_OBJ);
-                     ?>
-                     <input type="hidden" name="admin_id" value="<?php echo $admin_id; ?>">
                      <h2>Edit Kategori</h2>
-                      <tr>
-                        <td>Nama kategori </td>
-                        <td><input type="text" name="kategori" placeholder="<?php echo $row->category_name; ?>" required/></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td><input type="submit" value="SAVE" name="submit"></td>
-                      </tr>
+                     <tr>
+                       <input type="hidden" name="admin_id" value="<?php echo $admin_id; ?>">
+                       <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                       <td>Nama kategori </td>
+                       <td colspan="2"><input type="text" name="kategori" placeholder="<?php echo $row->category_name; ?>" required/></td>
+                     </tr>
+                     <tr>
+                       <td></td>
+                       <td><input type="submit" value="SAVE" name="submit"></td>
+                     </tr>
                    </table>
                 </form>
+                <!-- end form -->
               </div>
           </center>
     			</div>
