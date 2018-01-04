@@ -1,6 +1,5 @@
 <?php
   include 'koneksi.php';
-  session_start();
   if(isset($_POST['submit'])){
 		$c_name = $_POST['kategori'];
 		$admin_id  = $_POST['admin_id'];

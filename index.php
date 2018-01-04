@@ -1,31 +1,74 @@
 <?php require 'header.php'; ?>
-		<div class="main-content">
-			<div class="navigate">
-				<p>Category
-					<?php
-					if (isset($_SESSION['first_name'])) {
-						echo "<a href='kategori.php'>
-									<img src='image/plus.png' alt='plus' width='20px'>
-									</a>";
+
+<div class="main-content">
+	<!-- start navigate -->
+	<div class="navigate">
+		<p>Category
+			<?php
+			if (isset($_SESSION['first_name'])) {
+				echo "<a href='kategori.php'>
+							<img src='image/plus.png' alt='plus' width='20px'>
+							</a>";
+			}
+			?>
+		</p>
+		<ul>
+			<?php
+				$stmt = $conn->prepare('SELECT * FROM category ORDER BY category_name ASC');
+				$stmt->execute();
+				while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+					echo "<li><a href='search.php?category=".$row->id."'>".$row->category_name."</a></li>";
+				}
+				for ($i=0; $i <50 ; $i++) {
+					echo "<br>";
+				}
+			?>
+		</ul>
+	</div>
+	<!-- end navigate -->
+
+				<?php
+				$page1=0;
+				if (isset($_GET['page'])) {
+					$page = $_GET['page'];
+					if ($page=="" || $page=="1") {
+						$page1=0;
+					}else {
+						$page1=($page*6)-6;
 					}
-					?>
-				</p>
-				<ul>
-					<?php
-						$stmt = $conn->prepare('SELECT category_name FROM category ORDER BY category_name ASC');
-						$stmt->execute();
-						while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-							echo "<li><a href='#'>".$row->category_name."</a></li>";
+				}
+				$stmt = $conn->prepare('SELECT article.id, article.title, article.description, article.image, article.created_at, category.category_name FROM article INNER JOIN category ON article.category_id=category.id ORDER BY article.created_at DESC LIMIT '.$page1.',6');
+				$stmt->execute();
+
+				while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+					$tmp_desc = substr($row->description, 0, 400);
+						echo "<div class='nonarticle'>";
+						echo "<h3>".$row->title."</h3>";
+						echo "<p><img src='image/".$row->image."' width='600px'>".$tmp_desc." <i>(".$row->created_at." - ".$row->category_name.") </i><a href='index_detail.php?id=".$row->id."'>Read More</a><br>";
+						if (isset($_SESSION['first_name'])) {
+						echo "
+							<table>
+								<tr>
+									<td><a id='warning' href='berita_edit_form.php?id=".$row->id."'>UBAH</a></td>";?>
+									<td><a id="danger" onclick="return confirm('Apakah yakin menghapus berita ini?')" href="berita_hapus.php?id=<?php echo $row->id; ?>">HAPUS</a></td>
+		<?php echo "</tr>
+							</table>
+						";
 						}
-					?>
-				</ul>
-			</div>
-			<div class="article">
-				<h3>HTML</h3>
-				<p><img src="image/HTML.png">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<a href="html-desc.html">Read More</a>
-				</p>
-				<h3>CSS</h3>
-				<p><img src="image/css.png">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<a href="css-desc.html">Read More</a></p>
-			</div>
-		</div>
-<?php require 'footer.php'; ?>
+						echo "</div>";
+				}
+				?>
+	</div>
+	<?php
+	$stmt = $conn->prepare('SELECT * FROM article');
+	$stmt->execute();
+	$totrow = $stmt->rowCount();
+	$totrow = ceil($totrow/6);
+	echo "<div class='paginate'>";
+	echo "Page : ";
+	for ($i=1; $i<=$totrow ; $i++) {
+		echo "<a href='index.php?page=".$i."' style='text-decoration:none;'> ".$i."</a>";
+	}
+	echo "<br><br></div>";
+	require 'footer.php';
+	?>

@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Form signup</title>
+	<link rel="icon" href="image/icon.png" sizes="16x16">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -37,8 +38,18 @@
 				</tr>
 				<tr>
 					<td colspan="2">
+						<?php
+							require 'koneksi.php';
+							session_start();
+							if (isset($_SESSION['first_name'])){
+								$msg = "Jika ingin menggunakan akun lain silahkan untuk logout terlebih dahulu!";
+							}
+							else {
+								$msg = "Sudah punya akun? <a href='form_signin.html'>Masuk disini!</a>";
+							}
+						 ?>
 						<center><br>
-							Sudah punya akun? <a href="form_signin.html">Masuk disini!</a>
+							<?php echo $msg; ?>
 						</center>
 					</td>
 				</tr>

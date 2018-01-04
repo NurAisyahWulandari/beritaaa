@@ -22,7 +22,11 @@
 		<div class="menu">
 			<div class="menu-kiri">
 				<a href="index.php">Home</a>
-				<a href="Contact-us.html">Contact Us</a>
+        <?php
+        if (isset($_SESSION['first_name'])) {
+          echo "<a href='dashboard.php'>Dashboard</a>";
+        }
+        ?>
 			</div>
 			<div class='menu-kanan'>
 				<?php
@@ -37,3 +41,5 @@
 				?>
 			</div>
 		</div>
+
+    

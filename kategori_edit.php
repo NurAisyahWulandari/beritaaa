@@ -13,16 +13,16 @@
             </p>
     				<ul>
               <?php
-    						$stmt = $conn->prepare('SELECT category_name FROM category ORDER BY category_name ASC');
+    						$stmt = $conn->prepare('SELECT id, category_name FROM category ORDER BY category_name ASC');
     						$stmt->execute();
     						while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-    							echo "<li><a href='#'>".$row->category_name."</a></li>";
+    							echo "<li><a href='search.php?category=".$row->id."'>".$row->category_name."</a></li>";
     						}
     					?>
     				</ul>
     			</div>
+          <center>
     			<div class="article">
-            <center>
             <!-- new category form -->
               <div class="news-table">
                 <?php
@@ -44,14 +44,14 @@
                      </tr>
                      <tr>
                        <td></td>
-                       <td><input type="submit" value="SAVE" name="submit"></td>
+                       <td><input type="button" value="KEMBALI" onclick="history.back()"><input type="submit" value="SIMPAN" name="submit"></td>
                      </tr>
                    </table>
                 </form>
                 <!-- end form -->
               </div>
-          </center>
     			</div>
+          </center>
         </div>
         <!--end main-->
 <?php require 'footer_auth.php'; ?>

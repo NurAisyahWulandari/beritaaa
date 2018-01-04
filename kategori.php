@@ -13,10 +13,10 @@
             </p>
     				<ul>
               <?php
-    						$stmt = $conn->prepare('SELECT category_name FROM category ORDER BY category_name ASC');
+    						$stmt = $conn->prepare('SELECT id, category_name FROM category ORDER BY category_name ASC');
     						$stmt->execute();
     						while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-    							echo "<li><a href='#'>".$row->category_name."</a></li>";
+    							echo "<li><a href='search.php?category=".$row->id."'>".$row->category_name."</a></li>";
     						}
     					?>
     				</ul>
@@ -35,7 +35,7 @@
                       </tr>
                       <tr>
                         <td></td>
-                        <td><input type="submit" value="SAVE" name="submit"></td>
+                        <td><input type="submit" value="SIMPAN" name="submit"></td>
                       </tr>
                    </table>
                 </form>
@@ -55,15 +55,14 @@
                 $stmt = $conn->prepare('SELECT category.id, category.category_name, admin.first_name FROM admin INNER JOIN category ON category.admin_id=admin.id ORDER BY category.category_name ASC');
                 $stmt->execute();
                 $no = 1;
-
                 while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
                   echo "<tr>
                         <td>".$no++."</td>";
                   echo "<td>".$row->category_name."</td>";
                   echo "<td>".$row->first_name."</td>";
-                  echo "<td><a id='warning' href='kategori_edit.php?id=".$row->id."'>UBAH</a></td>";
-                  echo "<td><a id='danger' href='kategori_hapus.php?id=".$row->id."'>HAPUS</a></td>
-                        </tr>";
+                  echo "<td><a id='warning' href='kategori_edit.php?id=".$row->id."'>UBAH</a></td>";?>
+                  <td><a id="danger" onclick="return confirm('Apakah yakin menghapus kategori?')" href="kategori_hapus.php?id=<?php echo $row->id; ?>">HAPUS</a></td>
+                  <?php echo "</tr>";
                 }
               ?>
             </table>
@@ -71,5 +70,6 @@
           </center>
     			</div>
         </div>
+        <br><br>
         <!--end main-->
 <?php require 'footer_auth.php'; ?>

@@ -26,7 +26,7 @@
 		} else{
 			$_SESSION['id']=$row->id;
 			$_SESSION['first_name']=$row->first_name;
-			header("location:index.php");
+			header("location:dashboard.php");
 		}
 	}
 ?>
