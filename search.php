@@ -49,7 +49,7 @@
       $tmp_desc = substr($row->description, 0, 400);
         echo "<div class='nonarticle'>";
         echo "<h3>".$row->title."</h3>";
-        echo "<p><img src='image/".$row->image."' width='600px'>".$tmp_desc." <i>(".$row->created_at." - ".$row->category_name.") </i><a href='index_detail.php?id=".$row->id."'>Read More</a><br>";
+        echo "<p><a href='index_detail.php?id=".$row->id."'><img src='image/".$row->image."' width='600px'></a>".$tmp_desc." <i>(".$row->created_at." - ".$row->category_name.") </i><a href='index_detail.php?id=".$row->id."'>Read More</a><br>";
         if (isset($_SESSION['first_name'])) {
         echo "
           <table>
