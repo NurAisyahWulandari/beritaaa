@@ -1,5 +1,5 @@
 <?php
-  require 'koneksi.php';
+  require '../config/koneksi.php';
   session_start();
 ?>
 <html>
@@ -41,5 +41,3 @@
 				?>
 			</div>
 		</div>
-
-    
