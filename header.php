@@ -1,5 +1,5 @@
 <?php
-  require '../config/koneksi.php';
+  require 'koneksi.php';
   session_start();
 ?>
 <html>
